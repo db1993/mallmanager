@@ -17,7 +17,7 @@
         <el-aside class="aside" width="200px">
             <!-- 侧边栏 -->
 
-            <el-menu router unique-opened default-active="2"  class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+            <el-menu router unique-opened default-active="2"  class="el-menu-vertical-demo"s>
                 <el-submenu index="1">
                     <template slot="title">
                         <i class="el-icon-location"></i>
@@ -30,8 +30,8 @@
                         <i class="el-icon-location"></i>
                         <span>权限管理</span>
                     </template>
-                    <el-menu-item index="2-1"><i class="el-icon-menu"></i>角色列表</el-menu-item>
-                    <el-menu-item index="2-2"><i class="el-icon-menu"></i>权限列表</el-menu-item>
+                    <el-menu-item index="/role"><i class="el-icon-menu"></i>角色列表</el-menu-item>
+                    <el-menu-item index="/rights"><i class="el-icon-menu"></i>权限列表</el-menu-item>
                 </el-submenu>
                 <el-submenu index="3">
                     <template slot="title">
@@ -59,7 +59,9 @@
             </el-menu>
 
         </el-aside>
-        <el-main class="main">Main</el-main>
+        <el-main class="main">
+            <router-view></router-view>
+        </el-main>
     </el-container>
 </el-container>
 </template>
@@ -78,7 +80,7 @@ export default {
     const token = sessionStorage.getItem('token')
     if(!token) {
         this.$message.warning('请先登录')
-        this.$router.push({name:'login'})
+        this.$router.push('/login')
     }
    } 
 };
